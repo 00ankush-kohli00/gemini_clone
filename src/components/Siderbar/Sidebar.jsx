@@ -4,6 +4,7 @@ import { assets } from "../../assets/assets";
 
 const Sidebar = () => {
   const [extended, setExtended] = useState(0);
+  
   return (
     <div className="sidebar">
       <div className="top">
