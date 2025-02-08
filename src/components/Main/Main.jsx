@@ -15,6 +15,12 @@ const Main = () => {
     input,
   } = useContext(Context);
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSent();
+    }
+  };
+
   return (
     <div className="main">
       <div className="nav">
@@ -51,7 +57,6 @@ const Main = () => {
           </>
         ) : (
           <div className="result">
-            <p>hello world!</p>
             <div className="result-title">
               <img src={assets.user_icon} alt="" />
               <p>{recentPrompt}</p>
@@ -70,7 +75,6 @@ const Main = () => {
             </div>
           </div>
         )}
-
         <div className="main-bottom">
           <div className="search-box">
             <input
@@ -78,11 +82,14 @@ const Main = () => {
               type="text"
               placeholder="Enter a prompt here"
               value={input}
+              onKeyDown={handleKeyDown}
             />
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              {input ? (
+                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+              ) : null}
             </div>
           </div>
           <p className="bottom-info">
